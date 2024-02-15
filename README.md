@@ -1,5 +1,9 @@
 # chat_app
 
-This project is a simple chat app using flutter and connect to web socket server. The app has a simple UI with a list of messages and a text field to send a new message. The app uses the socket_io_client package to connect to a web socket server. The server is a simple Node.js server that uses the socket.io package to create a web socket server.
+Este proyecto es un chat hecho en flutter que se conecta a un servidor hecho en Node js, hace peticiones a una API y recibe notificaciones por medio de un socket.
 
-This app was only tested on Web.
+Este proyecto solo ha sido probado en web.
+
+La conexión está establecida en esta ruta <http://127.0.0.1:3000>, las URL de acceso se encuentran en "lib/app/global/environment.dart".
+
+En caso de cambiarlas hay que volver a construir la aplicación web con el comando "flutter build web" y el contendio de la carpeta "build/web" debe reemplazar el contendio de la carpeta "public" de nuestro proyecto en Node.
