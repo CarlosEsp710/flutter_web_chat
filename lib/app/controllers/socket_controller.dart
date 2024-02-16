@@ -4,8 +4,6 @@ import 'package:get/get.dart';
 import 'package:socket_io_client/socket_io_client.dart' as client;
 import 'package:socket_io_client/socket_io_client.dart';
 
-import '../global/environment.dart';
-
 enum ServerStatus { Online, Offline, Connecting }
 
 class SocketController extends GetxController {
@@ -19,8 +17,10 @@ class SocketController extends GetxController {
   Function get emit => _socket.value.emit;
 
   void connect(String userId) async {
+    final urlBase = Uri.base.origin;
+
     _socket = Rx<client.Socket>(client.io(
-      Environment.SOCKET_URL,
+      urlBase,
       OptionBuilder()
           .setTransports(['websocket']) // for Flutter or Dart VM
           .enableAutoConnect() // optional

@@ -2,9 +2,9 @@ import 'package:dio/dio.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 import 'package:platform_device_id/platform_device_id.dart';
 
-import '../global/environment.dart';
-
 class UserHelper {
+  static String apiUrl = '${Uri.base.origin}/api';
+
   static Future<types.User?> getUserData() async {
     try {
       String? deviceId = await PlatformDeviceId.getDeviceId;
@@ -14,7 +14,7 @@ class UserHelper {
       }
 
       final response = await Dio().post(
-        '${Environment.API_URL}/users/getUser',
+        '$apiUrl/users/getUser',
         data: {"device_id": deviceId},
       );
 
@@ -37,7 +37,7 @@ class UserHelper {
 
   static Future<types.User> changeNickname(String uid, String nickname) async {
     final response = await Dio().post(
-      '${Environment.API_URL}/users/updateNickname',
+      '$apiUrl/users/updateNickname',
       data: {"nickname": nickname, "uid": uid},
     );
 
@@ -56,8 +56,7 @@ class UserHelper {
   }
 
   static Future<int> getTotalUsers() async {
-    final response =
-        await Dio().get('${Environment.API_URL}/users/getTotalUsers');
+    final response = await Dio().get('$apiUrl/users/getTotalUsers');
 
     final status = response.data['ok'];
 

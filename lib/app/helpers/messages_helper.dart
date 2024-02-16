@@ -2,13 +2,13 @@ import 'package:dio/dio.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 import 'package:uuid/uuid.dart';
 
-import '../global/environment.dart';
-
 class MessagesHelper {
+  static String apiUrl = '${Uri.base.origin}/api';
+
   static Future<List<types.Message>> getAllMessages() async {
     try {
       final response = await Dio().get(
-        '${Environment.API_URL}/messages/getAllMessages',
+        '$apiUrl/messages/getAllMessages',
       );
 
       if (response.data['ok']) {

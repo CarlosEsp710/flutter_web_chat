@@ -20,7 +20,7 @@ class StateController extends GetxController {
     final res = await UserHelper.getUserData();
 
     if (res == null) {
-      Get.to(() => const ErrorPage(error: 'Usuario no encontrado'));
+      Get.to(() => const ErrorPage(error: 'No se pudo acceder al servidor'));
       return;
     }
 
